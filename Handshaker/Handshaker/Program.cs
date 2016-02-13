@@ -10,7 +10,6 @@ namespace Handshaker
     {
         static void Main(string[] args)
         {
-            // Ben yaptım.
         }
     }
 }

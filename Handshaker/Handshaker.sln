@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handshaker", "Handshaker\Handshaker.csproj", "{788FC9CE-26E6-4459-AED0-2FF6F30FC5E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handshaker", "Handshaker\Handshaker.csproj", "{770D3084-3313-48F8-9D67-DD2B3C383E85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{788FC9CE-26E6-4459-AED0-2FF6F30FC5E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{788FC9CE-26E6-4459-AED0-2FF6F30FC5E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{788FC9CE-26E6-4459-AED0-2FF6F30FC5E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{788FC9CE-26E6-4459-AED0-2FF6F30FC5E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770D3084-3313-48F8-9D67-DD2B3C383E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770D3084-3313-48F8-9D67-DD2B3C383E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770D3084-3313-48F8-9D67-DD2B3C383E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770D3084-3313-48F8-9D67-DD2B3C383E85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
