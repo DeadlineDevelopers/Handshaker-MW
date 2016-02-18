@@ -64,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Codes\Models\UserModel.cs" />
+    <Compile Include="Codes\Providers\UserProvider.cs" />
     <Compile Include="DatabaseModel\HandshakerModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
