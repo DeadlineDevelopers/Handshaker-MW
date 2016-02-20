@@ -66,16 +66,6 @@
   <ItemGroup>
     <Compile Include="Codes\Models\UserModel.cs" />
     <Compile Include="Codes\Providers\UserProvider.cs" />
-    <Compile Include="DatabaseModel\HandshakerModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HandshakerModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseModel\HandshakerModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HandshakerModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseModel\HandshakerModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -90,18 +80,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HandshakerModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DatabaseModel\HandshakerModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HandshakerModel.edmx</DependentUpon>
-      <LastGenOutput>HandshakerModel.Context.cs</LastGenOutput>
-    </None>
     <None Include="DatabaseModel\HandshakerModel.edmx.diagram">
       <DependentUpon>HandshakerModel.edmx</DependentUpon>
-    </None>
-    <None Include="DatabaseModel\HandshakerModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HandshakerModel.edmx</DependentUpon>
-      <LastGenOutput>HandshakerModel.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
