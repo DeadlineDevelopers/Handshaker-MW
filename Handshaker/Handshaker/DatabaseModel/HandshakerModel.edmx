@@ -7,6 +7,15 @@
     <Schema Namespace="HandshakerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="HandshakerModelStoreContainer">
     <EntitySet Name="UserSet" EntityType="HandshakerModel.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ContactSet" EntityType="HandshakerModel.Store.ContactSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_ContactSet_User" Association="HandshakerModel.Store.FK_ContactSet_User">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="ContactSet" EntitySet="ContactSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ContactSet_User1" Association="HandshakerModel.Store.FK_ContactSet_User1">
+      <End Role="User1" EntitySet="UserSet" />
+      <End Role="ContactSet" EntitySet="ContactSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="UserSet">
     <Key>
@@ -19,12 +28,48 @@
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="ContactSet">
+    <Key>
+      <PropertyRef Name="UsersThatIamInContact_Id" />
+      <PropertyRef Name="MyContacts_Id" />
+    </Key>
+    <Property Name="UsersThatIamInContact_Id" Type="int" Nullable="false" />
+    <Property Name="MyContacts_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ContactSet_User">
+    <End Role="User" Type="HandshakerModel.Store.UserSet" Multiplicity="1" />
+    <End Role="ContactSet" Type="HandshakerModel.Store.ContactSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactSet">
+        <PropertyRef Name="UsersThatIamInContact_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ContactSet_User1">
+    <End Role="ContactSet" Type="HandshakerModel.Store.ContactSet" Multiplicity="*" />
+    <End Role="User1" Type="HandshakerModel.Store.UserSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ContactSet">
+        <PropertyRef Name="MyContacts_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HandshakerModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="HandshakerEntities" p1:LazyLoadingEnabled="true" >
           <EntitySet Name="UserSet" EntityType="HandshakerModel.User" />
+          <AssociationSet Name="ContactSet" Association="HandshakerModel.ContactSet">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="User1" EntitySet="UserSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -36,7 +81,13 @@
           <Property Type="String" Name="Username" Nullable="false" />
           <Property Type="String" Name="Email" Nullable="false" />
           <Property Type="String" Name="Password" Nullable="false" />
+          <NavigationProperty Name="MyContacts" Relationship="HandshakerModel.ContactSet" FromRole="User" ToRole="User1" />
+          <NavigationProperty Name="UsersThatIamInContact" Relationship="HandshakerModel.ContactSet" FromRole="User1" ToRole="User" />
         </EntityType>
+        <Association Name="ContactSet">
+          <End Type="HandshakerModel.User" Role="User" Multiplicity="*" />
+          <End Type="HandshakerModel.User" Role="User1" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -55,6 +106,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="ContactSet" TypeName="HandshakerModel.ContactSet" StoreEntitySet="ContactSet">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="UsersThatIamInContact_Id" />
+      </EndProperty>
+      <EndProperty Name="User1">
+        <ScalarProperty Name="Id" ColumnName="MyContacts_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

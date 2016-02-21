@@ -5,7 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="30f62f76aeed4ff68b16bc771f443e48" Name="Diagram1" >
-        <EntityTypeShape EntityType="HandshakerModel.User" Width="1.5" PointX="6.25" PointY="1.625" />
+        <EntityTypeShape EntityType="HandshakerModel.User" Width="1.875" PointX="5.5" PointY="1.25" />
+        <AssociationConnector Association="HandshakerModel.ContactSet" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

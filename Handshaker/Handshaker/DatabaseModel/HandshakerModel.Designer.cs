@@ -17,6 +17,12 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("HandshakerModel", "ContactSet", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Handshaker.DatabaseModel.User), "User1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Handshaker.DatabaseModel.User))]
+
+#endregion
+
 namespace Handshaker.DatabaseModel
 {
     #region Contexts
@@ -282,6 +288,54 @@ namespace Handshaker.DatabaseModel
         private global::System.String _Password;
         partial void OnPasswordChanging(global::System.String value);
         partial void OnPasswordChanged();
+
+        #endregion
+
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("HandshakerModel", "ContactSet", "User1")]
+        public EntityCollection<User> MyContacts
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("HandshakerModel.ContactSet", "User1");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("HandshakerModel.ContactSet", "User1", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("HandshakerModel", "ContactSet", "User")]
+        public EntityCollection<User> UsersThatIamInContact
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<User>("HandshakerModel.ContactSet", "User");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<User>("HandshakerModel.ContactSet", "User", value);
+                }
+            }
+        }
 
         #endregion
 
