@@ -47,8 +47,14 @@ namespace Handshaker.Codes.Providers
             return userId;
         }
 
-        public void SignIn(string userNameOrMail,string password)
+        /// <summary>
+        /// Registered user sign in
+        /// </summary>
+        /// <param name="userNameOrMail"></param>
+        /// <param name="password"></param>
+        public string SignIn(string userNameOrMail,string password)
         {
+            string signedUsername = "";
             #region hash password
                 byte[] passwordAsByte = System.Text.Encoding.ASCII.GetBytes(password);
                 passwordAsByte = new System.Security.Cryptography.SHA256Managed().ComputeHash(passwordAsByte);
@@ -59,10 +65,35 @@ namespace Handshaker.Codes.Providers
             {
                 User user = handshakerEntityContainer.UserSet.FirstOrDefault(u => (u.Username.Equals(userNameOrMail) || u.Email.Equals(userNameOrMail)) && u.Password.Equals(hashedPassword));
 
-                if(user==null)
+                if (user == null)
                     Console.WriteLine("Hatalı kullanıcı adı ya da parola");
                 else
+                {
                     Console.WriteLine("Handshaker uygulamamıza hoşgeldiniz");
+                    signedUsername = user.Username;
+                }
+            }
+
+            return signedUsername;
+        }
+
+        /// <summary>
+        /// Add new contact
+        /// </summary>
+        /// <param name="username"></param>
+        public void AddNewContact(string currentUsername, string contactUsername)
+        {
+            using (HandshakerEntities handshakerEntityContainer = new HandshakerEntities())
+            {
+                User currentUser = handshakerEntityContainer.UserSet.FirstOrDefault(u => u.Username.Equals(currentUsername));
+                User contactUser = handshakerEntityContainer.UserSet.FirstOrDefault(u => u.Username.Equals(contactUsername));
+
+                if (contactUser != null)
+                    currentUser.MyContacts.Add(contactUser);
+                else
+                    throw new Exception("" + contactUsername + " ismine sahip bir kullanıcı bulunamadı");
+
+                handshakerEntityContainer.SaveChanges();
             }
         }
     }
