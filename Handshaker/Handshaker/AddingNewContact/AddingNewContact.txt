@@ -1,1 +1,14 @@
-﻿Yeni dosya eklendi.
+﻿Console.Write("UserName Or Email :");
+            string userNameOrEmail = Console.ReadLine();
+            Console.Write("Password :");
+            string password = Console.ReadLine();
+
+            UserProvider userProvider = new UserProvider();
+            string currentUsername = userProvider.SignIn(userNameOrEmail, password);
+
+            Console.Write("Who do you want to contact?");
+            string contactUsername = Console.ReadLine();
+
+            userProvider.AddNewContact(currentUsername, contactUsername);
+
+            Console.ReadKey();

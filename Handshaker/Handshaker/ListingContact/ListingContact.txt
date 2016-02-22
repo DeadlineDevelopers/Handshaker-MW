@@ -1,1 +1,21 @@
-﻿Yeni dosya eklendi.
+﻿Console.Write("UserName Or Email :");
+            string userNameOrEmail = Console.ReadLine();
+            Console.Write("Password :");
+            string password = Console.ReadLine();
+
+            UserProvider userProvider = new UserProvider();
+            string currentUsername = userProvider.SignIn(userNameOrEmail, password);
+
+            Console.Write("Do you want to list your contacts?");
+            string answer = Console.ReadLine();
+
+            if (answer.Equals("E") || answer.Equals("e"))
+            {
+                List<UserModel> myContacts = userProvider.GetListOfMyContacts(currentUsername);
+
+                foreach (UserModel userModel in myContacts)
+                {
+                    Console.WriteLine(userModel.FirstName + " " + userModel.LastName);
+                }
+            }
+            Console.ReadKey();

@@ -10,6 +10,19 @@ namespace Handshaker.Codes.Providers
 {
     public class UserProvider
     {
+        public UserModel EntityObjectToModel(User user)
+        {
+            UserModel userModel = new UserModel()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Username = user.Username,
+                Email = user.Email
+            };
+
+            return userModel;
+        }
         /// <summary>
         /// Register new user
         /// </summary>
@@ -94,7 +107,33 @@ namespace Handshaker.Codes.Providers
                     throw new Exception("" + contactUsername + " ismine sahip bir kullanıcı bulunamadı");
 
                 handshakerEntityContainer.SaveChanges();
+                Console.Write("" + contactUsername + " ismine sahip bir kullanıcıyı bağlantılarınıza başarıyla eklendi");
             }
+        }
+
+        /// <summary>
+        /// List all my contacts
+        /// </summary>
+        /// <param name="currentUsername"></param>
+        /// <returns></returns>
+        public List<UserModel> GetListOfMyContacts(string currentUsername)
+        {
+            List<UserModel> myContactList = new List<UserModel>();
+
+            using (HandshakerEntities handshakerEntityContainer = new HandshakerEntities())
+            {
+                User currentUser = handshakerEntityContainer.UserSet.FirstOrDefault(u => u.Username.Equals(currentUsername));
+
+                if (currentUser != null)
+                {
+                    foreach(User myContact in currentUser.MyContacts)
+                        myContactList.Add(EntityObjectToModel(myContact));
+                }
+                else
+                    throw new Exception("" + currentUsername + " ismine sahip bir kullanıcı bulunamadı");
+            }
+
+            return myContactList;
         }
     }
 }

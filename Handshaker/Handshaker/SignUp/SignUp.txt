@@ -1,1 +1,24 @@
-﻿Yeni dosya eklendi.
+﻿Console.Write("FirstName :" );
+string firstName = Console.ReadLine();
+Console.Write("LastName :" );
+string lastName = Console.ReadLine();
+Console.Write("UserName :" );
+string username = Console.ReadLine();
+Console.Write("Email :" );
+string email = Console.ReadLine();
+Console.Write("Password :" );
+string password = Console.ReadLine();
+
+UserModel userModel = new UserModel()
+{
+FirstName = firstName,
+LastName = lastName,
+Username = username,
+Email = email,
+Password = password
+}
+
+UserProvider userProvider = new UserProvider();
+userProvider.SingUp(userModel);
+
+Console.ReadKey();

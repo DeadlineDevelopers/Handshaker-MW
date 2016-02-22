@@ -1,1 +1,9 @@
-﻿Yeni dosya eklendi.
+﻿Console.Write("UserName Or Email :" );
+string userNameOrEmail = Console.ReadLine();
+Console.Write("Password :" );
+string password = Console.ReadLine();
+
+UserProvider userProvider = new UserProvider();
+userProvider.SignIn(userNameOrEmail,password);
+
+Console.ReadKey();
