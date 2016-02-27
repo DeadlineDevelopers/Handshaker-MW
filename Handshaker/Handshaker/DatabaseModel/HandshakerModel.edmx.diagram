@@ -7,6 +7,7 @@
       <Diagram DiagramId="30f62f76aeed4ff68b16bc771f443e48" Name="Diagram1" >
         <EntityTypeShape EntityType="HandshakerModel.User" Width="1.875" PointX="5.5" PointY="1.25" />
         <AssociationConnector Association="HandshakerModel.ContactSet" />
+        <EntityTypeShape EntityType="HandshakerModel.IDCard" Width="1.5" PointX="2.875" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 02/21/2016 23:07:30
--- Generated from EDMX file: C:\Users\Yunus Emre\Documents\Handshaker-MW\Data\Handshaker\Handshaker\DatabaseModel\HandshakerModel.edmx
+-- Date Created: 02/24/2016 20:25:18
+-- Generated from EDMX file: C:\Users\taner.aydogan\Desktop\Handshaker\Handshaker\DatabaseModel\HandshakerModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,6 +17,12 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_ContactSet_User]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ContactSet] DROP CONSTRAINT [FK_ContactSet_User];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ContactSet_User1]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ContactSet] DROP CONSTRAINT [FK_ContactSet_User1];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -24,6 +30,12 @@ GO
 
 IF OBJECT_ID(N'[dbo].[UserSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserSet];
+GO
+IF OBJECT_ID(N'[dbo].[IDCardSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[IDCardSet];
+GO
+IF OBJECT_ID(N'[dbo].[ContactSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ContactSet];
 GO
 
 -- --------------------------------------------------
@@ -41,6 +53,20 @@ CREATE TABLE [dbo].[UserSet] (
 );
 GO
 
+-- Creating table 'IDCardSet'
+CREATE TABLE [dbo].[IDCardSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [UserID] int  NOT NULL,
+    [Title] nvarchar(max)  NOT NULL,
+    [HomeAddress] nvarchar(max)  NOT NULL,
+    [OfficeAddress] nvarchar(max)  NOT NULL,
+    [MobilePhone] nvarchar(max)  NOT NULL,
+    [OfficePhone] nvarchar(max)  NOT NULL,
+    [FacebookAddress] nvarchar(max)  NOT NULL,
+    [LinkedInAddress] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'ContactSet'
 CREATE TABLE [dbo].[ContactSet] (
     [UsersThatIamInContact_Id] int  NOT NULL,
@@ -55,6 +81,12 @@ GO
 -- Creating primary key on [Id] in table 'UserSet'
 ALTER TABLE [dbo].[UserSet]
 ADD CONSTRAINT [PK_UserSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'IDCardSet'
+ALTER TABLE [dbo].[IDCardSet]
+ADD CONSTRAINT [PK_IDCardSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

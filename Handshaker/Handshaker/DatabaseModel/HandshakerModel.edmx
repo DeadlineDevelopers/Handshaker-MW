@@ -7,6 +7,7 @@
     <Schema Namespace="HandshakerModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityContainer Name="HandshakerModelStoreContainer">
     <EntitySet Name="UserSet" EntityType="HandshakerModel.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IDCardSet" EntityType="HandshakerModel.Store.IDCardSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ContactSet" EntityType="HandshakerModel.Store.ContactSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_ContactSet_User" Association="HandshakerModel.Store.FK_ContactSet_User">
       <End Role="User" EntitySet="UserSet" />
@@ -27,6 +28,20 @@
     <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IDCardSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HomeAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OfficeAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MobilePhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OfficePhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FacebookAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LinkedInAddress" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="ContactSet">
     <Key>
@@ -70,6 +85,7 @@
             <End Role="User" EntitySet="UserSet" />
             <End Role="User1" EntitySet="UserSet" />
           </AssociationSet>
+          <EntitySet Name="IDCardSet" EntityType="HandshakerModel.IDCard" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -88,6 +104,20 @@
           <End Type="HandshakerModel.User" Role="User" Multiplicity="*" />
           <End Type="HandshakerModel.User" Role="User1" Multiplicity="*" />
         </Association>
+        <EntityType Name="IDCard">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" />
+          <Property Type="String" Name="HomeAddress" Nullable="false" />
+          <Property Type="String" Name="OfficeAddress" Nullable="false" />
+          <Property Type="String" Name="MobilePhone" Nullable="false" />
+          <Property Type="String" Name="OfficePhone" Nullable="false" />
+          <Property Type="String" Name="FacebookAddress" Nullable="false" />
+          <Property Type="String" Name="LinkedInAddress" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -103,6 +133,21 @@
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IDCardSet">
+      <EntityTypeMapping TypeName="IsTypeOf(HandshakerModel.IDCard)">
+        <MappingFragment StoreEntitySet="IDCardSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="HomeAddress" ColumnName="HomeAddress" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+          <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+          <ScalarProperty Name="FacebookAddress" ColumnName="FacebookAddress" />
+          <ScalarProperty Name="LinkedInAddress" ColumnName="LinkedInAddress" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

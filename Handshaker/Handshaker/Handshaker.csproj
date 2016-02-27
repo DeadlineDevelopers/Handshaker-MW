@@ -64,7 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Codes\Models\IDCardModel.cs" />
     <Compile Include="Codes\Models\UserModel.cs" />
+    <Compile Include="Codes\Providers\IDCardProvider.cs" />
     <Compile Include="Codes\Providers\UserProvider.cs" />
     <Compile Include="DatabaseModel\HandshakerModel.Designer.cs">
       <AutoGen>True</AutoGen>

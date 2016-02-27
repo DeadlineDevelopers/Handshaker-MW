@@ -86,6 +86,22 @@ namespace Handshaker.DatabaseModel
             }
         }
         private ObjectSet<User> _UserSet;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<IDCard> IDCardSet
+        {
+            get
+            {
+                if ((_IDCardSet == null))
+                {
+                    _IDCardSet = base.CreateObjectSet<IDCard>("IDCardSet");
+                }
+                return _IDCardSet;
+            }
+        }
+        private ObjectSet<IDCard> _IDCardSet;
 
         #endregion
 
@@ -98,6 +114,14 @@ namespace Handshaker.DatabaseModel
         {
             base.AddObject("UserSet", user);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the IDCardSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToIDCardSet(IDCard iDCard)
+        {
+            base.AddObject("IDCardSet", iDCard);
+        }
 
         #endregion
 
@@ -106,6 +130,270 @@ namespace Handshaker.DatabaseModel
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="HandshakerModel", Name="IDCard")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class IDCard : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new IDCard object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="userID">Initial value of the UserID property.</param>
+        /// <param name="title">Initial value of the Title property.</param>
+        /// <param name="homeAddress">Initial value of the HomeAddress property.</param>
+        /// <param name="officeAddress">Initial value of the OfficeAddress property.</param>
+        /// <param name="mobilePhone">Initial value of the MobilePhone property.</param>
+        /// <param name="officePhone">Initial value of the OfficePhone property.</param>
+        /// <param name="facebookAddress">Initial value of the FacebookAddress property.</param>
+        /// <param name="linkedInAddress">Initial value of the LinkedInAddress property.</param>
+        public static IDCard CreateIDCard(global::System.Int32 id, global::System.Int32 userID, global::System.String title, global::System.String homeAddress, global::System.String officeAddress, global::System.String mobilePhone, global::System.String officePhone, global::System.String facebookAddress, global::System.String linkedInAddress)
+        {
+            IDCard iDCard = new IDCard();
+            iDCard.Id = id;
+            iDCard.UserID = userID;
+            iDCard.Title = title;
+            iDCard.HomeAddress = homeAddress;
+            iDCard.OfficeAddress = officeAddress;
+            iDCard.MobilePhone = mobilePhone;
+            iDCard.OfficePhone = officePhone;
+            iDCard.FacebookAddress = facebookAddress;
+            iDCard.LinkedInAddress = linkedInAddress;
+            return iDCard;
+        }
+
+        #endregion
+
+        #region Simple Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value, "Id");
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 UserID
+        {
+            get
+            {
+                return _UserID;
+            }
+            set
+            {
+                OnUserIDChanging(value);
+                ReportPropertyChanging("UserID");
+                _UserID = StructuralObject.SetValidValue(value, "UserID");
+                ReportPropertyChanged("UserID");
+                OnUserIDChanged();
+            }
+        }
+        private global::System.Int32 _UserID;
+        partial void OnUserIDChanging(global::System.Int32 value);
+        partial void OnUserIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                OnTitleChanging(value);
+                ReportPropertyChanging("Title");
+                _Title = StructuralObject.SetValidValue(value, false, "Title");
+                ReportPropertyChanged("Title");
+                OnTitleChanged();
+            }
+        }
+        private global::System.String _Title;
+        partial void OnTitleChanging(global::System.String value);
+        partial void OnTitleChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String HomeAddress
+        {
+            get
+            {
+                return _HomeAddress;
+            }
+            set
+            {
+                OnHomeAddressChanging(value);
+                ReportPropertyChanging("HomeAddress");
+                _HomeAddress = StructuralObject.SetValidValue(value, false, "HomeAddress");
+                ReportPropertyChanged("HomeAddress");
+                OnHomeAddressChanged();
+            }
+        }
+        private global::System.String _HomeAddress;
+        partial void OnHomeAddressChanging(global::System.String value);
+        partial void OnHomeAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String OfficeAddress
+        {
+            get
+            {
+                return _OfficeAddress;
+            }
+            set
+            {
+                OnOfficeAddressChanging(value);
+                ReportPropertyChanging("OfficeAddress");
+                _OfficeAddress = StructuralObject.SetValidValue(value, false, "OfficeAddress");
+                ReportPropertyChanged("OfficeAddress");
+                OnOfficeAddressChanged();
+            }
+        }
+        private global::System.String _OfficeAddress;
+        partial void OnOfficeAddressChanging(global::System.String value);
+        partial void OnOfficeAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String MobilePhone
+        {
+            get
+            {
+                return _MobilePhone;
+            }
+            set
+            {
+                OnMobilePhoneChanging(value);
+                ReportPropertyChanging("MobilePhone");
+                _MobilePhone = StructuralObject.SetValidValue(value, false, "MobilePhone");
+                ReportPropertyChanged("MobilePhone");
+                OnMobilePhoneChanged();
+            }
+        }
+        private global::System.String _MobilePhone;
+        partial void OnMobilePhoneChanging(global::System.String value);
+        partial void OnMobilePhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String OfficePhone
+        {
+            get
+            {
+                return _OfficePhone;
+            }
+            set
+            {
+                OnOfficePhoneChanging(value);
+                ReportPropertyChanging("OfficePhone");
+                _OfficePhone = StructuralObject.SetValidValue(value, false, "OfficePhone");
+                ReportPropertyChanged("OfficePhone");
+                OnOfficePhoneChanged();
+            }
+        }
+        private global::System.String _OfficePhone;
+        partial void OnOfficePhoneChanging(global::System.String value);
+        partial void OnOfficePhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String FacebookAddress
+        {
+            get
+            {
+                return _FacebookAddress;
+            }
+            set
+            {
+                OnFacebookAddressChanging(value);
+                ReportPropertyChanging("FacebookAddress");
+                _FacebookAddress = StructuralObject.SetValidValue(value, false, "FacebookAddress");
+                ReportPropertyChanged("FacebookAddress");
+                OnFacebookAddressChanged();
+            }
+        }
+        private global::System.String _FacebookAddress;
+        partial void OnFacebookAddressChanging(global::System.String value);
+        partial void OnFacebookAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LinkedInAddress
+        {
+            get
+            {
+                return _LinkedInAddress;
+            }
+            set
+            {
+                OnLinkedInAddressChanging(value);
+                ReportPropertyChanging("LinkedInAddress");
+                _LinkedInAddress = StructuralObject.SetValidValue(value, false, "LinkedInAddress");
+                ReportPropertyChanged("LinkedInAddress");
+                OnLinkedInAddressChanged();
+            }
+        }
+        private global::System.String _LinkedInAddress;
+        partial void OnLinkedInAddressChanging(global::System.String value);
+        partial void OnLinkedInAddressChanged();
+
+        #endregion
+
+    }
     
     /// <summary>
     /// No Metadata Documentation available.
